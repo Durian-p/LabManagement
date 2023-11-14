@@ -7,8 +7,8 @@ import lombok.Data;
 @TableName("borrowLog")
 public class borrowLog {
     private String borrowId;
-    private String supId;
-    private String supName;
-    private String quantity;
-    private String returnDate;
+    private String suppliesId;
+    private String suppliesName;
+    private int quantity;
+    private String borrowDate;
 }

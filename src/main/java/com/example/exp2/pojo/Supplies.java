@@ -7,5 +7,5 @@ import lombok.Data;
 public class Supplies {
     private String suppliesId;
     private String suppliesName;
-    private String quantity;
+    private int quantity;
 }
