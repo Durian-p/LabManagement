@@ -10,5 +10,5 @@ public class borrowLog {
     private String supId;
     private String supName;
     private String quantity;
-    private String returnDate;
+    private String borrowDate;
 }

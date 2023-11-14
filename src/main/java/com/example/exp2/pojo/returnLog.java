@@ -8,6 +8,6 @@ public class returnLog {
     private String returnId;
     private String suppliesId;
     private String suppliesName;
-    private String quantity;
+    private int quantity;
     private String returnDate;
 }
