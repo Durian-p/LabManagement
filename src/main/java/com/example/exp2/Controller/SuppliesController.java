@@ -19,11 +19,18 @@ public class SuppliesController {
         this.suppliesService = suppliesService;
     }
 
-    @GetMapping(value = "/test", name = "getStaffList")
+    @GetMapping(value = "/get", name = "getSuppliesList")
     @ResponseBody
-    public CommonResponse<Object> getStaffList() {
+    public CommonResponse<Object> getSuppliesList() {
         List<Supplies> suppliesList = suppliesService.getSuppliesList();
         return CommonResponse.forSuccess(suppliesList);
+    }
+
+    @PutMapping(value = "/put", name = "updateSuppliesById")
+    @ResponseBody
+    public CommonResponse<Object> updateSuppliesById(@RequestBody Supplies supplies) {
+        boolean result = suppliesService.updateSuppliesById(supplies);
+        return CommonResponse.forSuccess(result);
     }
 }
 

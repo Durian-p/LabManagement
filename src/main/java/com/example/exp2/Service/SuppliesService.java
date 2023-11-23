@@ -22,4 +22,8 @@ public class SuppliesService {
         QueryWrapper<Supplies> queryWrapper = new QueryWrapper<>();
         return SuppliesMapper.selectList(queryWrapper);
     }
+
+    public boolean updateSuppliesById(Supplies supplies) {
+        return SuppliesMapper.updateById(supplies) > 0;
+    }
 }
