@@ -9,17 +9,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping ("/supplies")
+@RequestMapping(value = "/supplies", name = "Supplies")
 @CrossOrigin
 public class SuppliesController {
     private SuppliesService suppliesService;
+
     @Autowired
-    public SuppliesController(SuppliesService suppliesService){
+    public SuppliesController(SuppliesService suppliesService) {
         this.suppliesService = suppliesService;
     }
-    @GetMapping("")
+
+    @GetMapping(value = "/test", name = "getStaffList")
     @ResponseBody
-    public CommonResponse<Object> getStaffList(){
+    public CommonResponse<Object> getStaffList() {
         List<Supplies> suppliesList = suppliesService.getSuppliesList();
         return CommonResponse.forSuccess(suppliesList);
     }
