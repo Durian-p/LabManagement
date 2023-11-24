@@ -1,6 +1,6 @@
-package com.example.exp2.Controller;
+package com.example.exp2.controller;
 
-import com.example.exp2.Common.CommonResponse;
+import com.example.exp2.common.CommonResponse;
 import com.example.exp2.Service.SuppliesService;
 import com.example.exp2.pojo.Supplies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +19,14 @@ public class SuppliesController {
         this.suppliesService = suppliesService;
     }
 
-    @GetMapping(value = "/get", name = "getSuppliesList")
+    @GetMapping(value = "", name = "getSuppliesList")
     @ResponseBody
     public CommonResponse<Object> getSuppliesList() {
         List<Supplies> suppliesList = suppliesService.getSuppliesList();
         return CommonResponse.forSuccess(suppliesList);
     }
 
-    @PutMapping(value = "/put", name = "updateSuppliesById")
+    @PutMapping(value = "", name = "updateSuppliesById")
     @ResponseBody
     public CommonResponse<Object> updateSuppliesById(@RequestBody Supplies supplies) {
         boolean result = suppliesService.updateSuppliesById(supplies);

@@ -1,56 +1,47 @@
 package com.example.exp2.common;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 
 @Getter
-public class CommonResponse<T>
-{
-    private int code;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CommonResponse<T> {
+    private int status;
     private String msg;
     private T data;
 
-    private CommonResponse(int code, String msg)
-    {
-        this.code = code;
+    private CommonResponse(int status,String msg){
+        this.status = status;
         this.msg = msg;
     }
 
 
-    private CommonResponse(int code, String msg, T data)
-    {
-        this.code = code;
+    private CommonResponse(int status,String msg,T data){
+        this.status = status;
         this.msg = msg;
         this.data = data;
     }
 
-    public static <T> CommonResponse<T> forSuccess()
-    {
-        return new CommonResponse<>(ResponseCode.SUCCESS.getCode(), ResponseCode.SUCCESS.getDescription());
+    public static <T>CommonResponse<T> forSuccess(){
+        return new CommonResponse<>(ResponseCode.SUCCESS.getStatus(),ResponseCode.SUCCESS.getDescription());
     }
 
-    public static <T> CommonResponse<T> forSuccessMsg(String msg)
-    {
-        return new CommonResponse<>(ResponseCode.SUCCESS.getCode(), msg);
+    public static <T>CommonResponse<T> forSuccessMsg(String msg){
+        return new CommonResponse<>(ResponseCode.SUCCESS.getStatus() , msg);
     }
 
-    public static <T> CommonResponse<T> forStatusCode(int status)
-    {
-        return new CommonResponse<>(status,ResponseCode.getDescription(status));
+    public static <T>CommonResponse<T> forSuccess(T data){
+        return new CommonResponse<>(ResponseCode.SUCCESS.getStatus(), ResponseCode.SUCCESS.getDescription(), data);
     }
-
-    public static <T> CommonResponse<T> forCommon(int status, String msg, T data)
-    {
-        return new CommonResponse<>(status,msg,data);
-    }
-
-    public static <T>CommonResponse<T> forSuccess(String msg, T data){
-        return new CommonResponse<>(ResponseCode.SUCCESS.getCode(), msg, data);
+    public static <T>CommonResponse<T> forSuccess(String msg,T data){
+        return new CommonResponse<>(ResponseCode.SUCCESS.getStatus(), msg, data);
     }
 
     public static <T>CommonResponse<T> forError(){
-        return new CommonResponse<>(ResponseCode.ERROR.getCode(), ResponseCode.ERROR.getDescription());
+        return new CommonResponse<>(ResponseCode.ERROR.getStatus(), ResponseCode.ERROR.getDescription());
     }
 
     public static <T>CommonResponse<T> forError(String msg){
-        return new CommonResponse<>(ResponseCode.ERROR.getCode(), msg);
+        return new CommonResponse<>(ResponseCode.ERROR.getStatus(), msg);
     }
 }
