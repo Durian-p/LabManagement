@@ -1,4 +1,4 @@
-package com.example.exp2.common;
+package com.example.exp2.Common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
@@ -32,9 +32,6 @@ public class CommonResponse<T> {
 
     public static <T>CommonResponse<T> forSuccess(T data){
         return new CommonResponse<>(ResponseCode.SUCCESS.getStatus(), ResponseCode.SUCCESS.getDescription(), data);
-    }
-    public static <T>CommonResponse<T> forSuccess(String msg,T data){
-        return new CommonResponse<>(ResponseCode.SUCCESS.getStatus(), msg, data);
     }
 
     public static <T>CommonResponse<T> forError(){
