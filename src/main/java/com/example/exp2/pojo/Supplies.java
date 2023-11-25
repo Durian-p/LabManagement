@@ -11,4 +11,10 @@ public class Supplies {
     @TableField("suppliesName")
     private String suppliesName;
     private int quantity;
+
+    public Supplies(String suppliesName, int quantity, int suppliesId){
+        this.suppliesName = suppliesName;
+        this.quantity = quantity;
+        this.suppliesId = suppliesId;
+    }
 }
