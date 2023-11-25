@@ -7,7 +7,7 @@ import lombok.Data;
 @TableName("returnLog")
 public class returnLog {
     @TableField("returnId")
-    private String returnId;
+    private int returnId;
     @TableField("suppliesId")
     private String suppliesId;
     @TableField("suppliesName")

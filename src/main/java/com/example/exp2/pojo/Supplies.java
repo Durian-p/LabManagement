@@ -7,7 +7,7 @@ import lombok.Data;
 @TableName("supplies")
 public class Supplies {
     @TableField("suppliesId")
-    private String suppliesId;
+    private int suppliesId;
     @TableField("suppliesName")
     private String suppliesName;
     private int quantity;
