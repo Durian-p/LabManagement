@@ -8,7 +8,7 @@ import lombok.Data;
 @TableName("borrowLog")
 public class borrowLog {
     @TableField("borrowId")
-    private String borrowId;
+    private int borrowId;
     @TableField("suppliesId")
     private String suppliesId;
     @TableField("suppliesName")
