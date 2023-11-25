@@ -1,4 +1,6 @@
-package com.example.exp2.Common;
+package com.example.exp2.common;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 
 @Getter
