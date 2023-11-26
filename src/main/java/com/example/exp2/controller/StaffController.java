@@ -1,6 +1,6 @@
-package com.example.exp2.controller;
+package com.example.exp2.Controller;
 
-import com.example.exp2.common.CommonResponse;
+import com.example.exp2.Common.CommonResponse;
 import com.example.exp2.pojo.Staff;
 import com.example.exp2.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,7 +3,6 @@ package com.example.exp2.Controller;
 import com.example.exp2.Service.SuppliesService;
 import com.example.exp2.Common.CommonResponse;
 import com.example.exp2.pojo.Supplies;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,17 +20,29 @@ public class SuppliesController {
     }
 
     @GetMapping(value = "", name = "getSuppliesList")
-    @ResponseBody
     public CommonResponse<Object> getSuppliesList() {
-        List<Supplies> suppliesList = suppliesService.getSuppliesList();
-        return CommonResponse.forSuccess("成功获取物资列表", suppliesList);
+        return CommonResponse.forSuccess("成功获取物资列表", suppliesService.getSuppliesList());
     }
 
-    @PatchMapping(value = "{id}", name = "updateSuppliesById")
-    @ResponseBody
-    public CommonResponse<Object> updateSuppliesById(@RequestParam("suppliesName") String suppliesName, @RequestParam("quantity") int quantity, @PathVariable("id") int suppliesId) {
-        boolean result = suppliesService.updateSuppliesById(suppliesName, quantity, suppliesId);
-        return CommonResponse.forSuccess("成功更新制定物资", result);
+    @GetMapping(value = "{id}", name = "getSuppliesById")
+    public CommonResponse<Object> getSuppliesById(@PathVariable("id") Integer suppliesId){
+        return CommonResponse.forSuccess("成功获取指定物资", suppliesService.getSuppliesById(suppliesId));
     }
+    @PatchMapping(value = "{id}", name = "updateSuppliesById")
+    public CommonResponse<Object> updateSuppliesById(@RequestBody Supplies supplies, @PathVariable("id") Integer suppliesId) {
+        return CommonResponse.forSuccess("成功更新制定物资", suppliesService.updateSuppliesById(supplies.getSuppliesName(), supplies.getQuantity(), suppliesId));
+    }
+
+    @PostMapping(value = "", name = "addSupplies")
+    public CommonResponse<Object> addSupplies(@RequestBody Supplies supplies){
+        return CommonResponse.forSuccess("成功添加物资", suppliesService.addSupplies(supplies));
+    }
+
+    @DeleteMapping(value = "{id}", name = "deleteSupplies")
+    public CommonResponse<Object> deleteSupplies(@PathVariable("id") Integer suppliesId){
+        return CommonResponse.forSuccess("成功删除指定物资", suppliesService.deleteSuppliesById(suppliesId));
+    }
+
+
 }
 

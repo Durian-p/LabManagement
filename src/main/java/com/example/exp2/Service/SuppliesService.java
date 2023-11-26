@@ -23,8 +23,19 @@ public class SuppliesService {
         return SuppliesMapper.selectList(queryWrapper);
     }
 
-    public boolean updateSuppliesById(String suppliesName, int quantity, int suppliesId) {
-        Supplies supplies = new Supplies(suppliesName, quantity, suppliesId);
-        return SuppliesMapper.updateById(supplies) > 0;
+    public Supplies getSuppliesById(Integer suppliesId){
+        return SuppliesMapper.selectById(suppliesId);
+    }
+
+    public boolean updateSuppliesById(String suppliesName, Integer quantity, Integer suppliesId) {
+        return SuppliesMapper.updateById(new Supplies(suppliesName, quantity, suppliesId)) > 0;
+    }
+
+    public boolean addSupplies(Supplies supplies){
+        return SuppliesMapper.insert(supplies) > 0;
+    }
+
+    public boolean deleteSuppliesById(Integer suppliesId){
+        return SuppliesMapper.deleteById(suppliesId) > 0;
     }
 }
