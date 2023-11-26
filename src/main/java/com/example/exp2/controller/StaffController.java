@@ -20,32 +20,38 @@ public class StaffController
         this.staffService = staffService;
     }
 
-    @GetMapping("")
+    /**
+     * Mapping注解里面的name是返回结果里的api链接的key值
+     * 所以需要填一下，直接用函数名就行
+     */
+
+    @GetMapping(value = "/all", name = "getAllStaffs")
     //@ApiOperation("获取所有员工列表")
     public CommonResponse getAllStaffs()
     {
-        return CommonResponse.forSuccess("成功获取员工列表",staffService.getAllStaffs());
+        return CommonResponse.forSuccess("测试", null);
+//        return CommonResponse.forSuccess("成功获取员工列表",staffService.getAllStaffs());
     }
 
-    @GetMapping("{id}")
+    @GetMapping(value = "/get/{id}", name = "getStaffById")
     public CommonResponse getStaffById(@PathVariable("id") String id)
     {
         return CommonResponse.forSuccess("成功获取员工信息",staffService.getStaffById(id));
     }
 
-    @PostMapping
+    @PostMapping(value = "/add", name = "addStaff")
     public CommonResponse addStaff(@RequestBody Staff staff)
     {
         return CommonResponse.forSuccess("成功添加员工信息",staffService.addStaff(staff));
     }
 
-    @PatchMapping("{id}")
+    @PatchMapping(value = "/update/{id}", name = "updateStaffById")
     public CommonResponse updateStaffById(@PathVariable("id") String id, @RequestBody Staff staff)
     {
         return CommonResponse.forSuccess("成功更新员工信息",staffService.updateStaffById(id,staff));
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public CommonResponse deleteStaffById(@PathVariable("id") String id)
     {
         return CommonResponse.forSuccess("成功删除员工信息",staffService.deleteStaffById(id));

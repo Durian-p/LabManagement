@@ -25,4 +25,9 @@ class Exp2ApplicationTests {
             System.out.println(link.getUrl());
         }
     }
+
+    @Test
+    void testAspect() {
+
+    }
 }
