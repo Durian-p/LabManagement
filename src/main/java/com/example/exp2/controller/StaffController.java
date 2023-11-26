@@ -25,7 +25,7 @@ public class StaffController
      * 所以需要填一下，直接用函数名就行
      */
 
-    @GetMapping(value = "/all", name = "getAllStaffs")
+    @GetMapping(value = "", name = "getAllStaffs")
     //@ApiOperation("获取所有员工列表")
     public CommonResponse getAllStaffs()
     {
@@ -33,25 +33,25 @@ public class StaffController
 //        return CommonResponse.forSuccess("成功获取员工列表",staffService.getAllStaffs());
     }
 
-    @GetMapping(value = "/get/{id}", name = "getStaffById")
+    @GetMapping(value = "/{id}", name = "getStaffById")
     public CommonResponse getStaffById(@PathVariable("id") String id)
     {
         return CommonResponse.forSuccess("成功获取员工信息",staffService.getStaffById(id));
     }
 
-    @PostMapping(value = "/add", name = "addStaff")
+    @PostMapping(value = "", name = "addStaff")
     public CommonResponse addStaff(@RequestBody Staff staff)
     {
         return CommonResponse.forSuccess("成功添加员工信息",staffService.addStaff(staff));
     }
 
-    @PatchMapping(value = "/update/{id}", name = "updateStaffById")
+    @PatchMapping(value = "/{id}", name = "updateStaffById")
     public CommonResponse updateStaffById(@PathVariable("id") String id, @RequestBody Staff staff)
     {
         return CommonResponse.forSuccess("成功更新员工信息",staffService.updateStaffById(id,staff));
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public CommonResponse deleteStaffById(@PathVariable("id") String id)
     {
         return CommonResponse.forSuccess("成功删除员工信息",staffService.deleteStaffById(id));
