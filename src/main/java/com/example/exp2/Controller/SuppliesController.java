@@ -1,7 +1,7 @@
-package com.example.exp2.Controller;
+package com.example.exp2.controller;
 
 import com.example.exp2.Service.SuppliesService;
-import com.example.exp2.Common.CommonResponse;
+import com.example.exp2.common.CommonResponse;
 import com.example.exp2.pojo.Supplies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.example.exp2.Common;
+package com.example.exp2.common;
 
 import lombok.Getter;
 
