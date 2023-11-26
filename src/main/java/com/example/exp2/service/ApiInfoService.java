@@ -1,4 +1,4 @@
-package com.example.exp2.Service;
+package com.example.exp2.service;
 
 import com.example.exp2.pojo.Link;
 import org.springframework.beans.factory.annotation.Autowired;

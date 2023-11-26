@@ -1,4 +1,4 @@
-package com.example.exp2.Mapper;
+package com.example.exp2.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.exp2.pojo.Staff;

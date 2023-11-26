@@ -1,7 +1,7 @@
-package com.example.exp2.Service;
+package com.example.exp2.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.exp2.Mapper.SuppliesMapper;
+import com.example.exp2.mapper.SuppliesMapper;
 import com.example.exp2.pojo.Supplies;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +31,9 @@ public class SuppliesService {
         return SuppliesMapper.updateById(new Supplies(suppliesName, quantity, suppliesId)) > 0;
     }
 
-    public boolean addSupplies(Supplies supplies){
-        return SuppliesMapper.insert(supplies) > 0;
+    public int addSupplies(Supplies supplies){
+        SuppliesMapper.insert(supplies);
+        return  supplies.getSuppliesId();
     }
 
     public boolean deleteSuppliesById(Integer suppliesId){
