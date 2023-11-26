@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.exp2.pojo.Staff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.exp2.Mapper.StaffMapper;
+import com.example.exp2.mapper.StaffMapper;
 import java.util.ArrayList;
 import java.util.List;
 

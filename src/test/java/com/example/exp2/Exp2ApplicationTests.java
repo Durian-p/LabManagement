@@ -1,6 +1,6 @@
 package com.example.exp2;
 
-import com.example.exp2.Service.ApiInfoService;
+import com.example.exp2.service.ApiInfoService;
 import com.example.exp2.pojo.Link;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
