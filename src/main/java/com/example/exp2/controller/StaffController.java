@@ -3,11 +3,13 @@ package com.example.exp2.controller;
 import com.example.exp2.common.CommonResponse;
 import com.example.exp2.pojo.Staff;
 import com.example.exp2.service.StaffService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/staff")
+@Api(tags="人员管理接口")
 public class StaffController
 {
     StaffService staffService;

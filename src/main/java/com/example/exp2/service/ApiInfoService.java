@@ -11,9 +11,11 @@ import org.springframework.web.util.pattern.PathPattern;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @Service
 public class ApiInfoService {
+
 
     private final RequestMappingHandlerMapping handlerMapping;
     private static final String URL_PREFIX = "http://localhost:8080";
@@ -29,11 +31,15 @@ public class ApiInfoService {
         Map<RequestMappingInfo, HandlerMethod> handlerMethods = handlerMapping.getHandlerMethods();
         for (RequestMappingInfo info : handlerMethods.keySet()) {
             if (info.getMethodsCondition().isEmpty()) continue;
-            for (PathPattern pattern : info.getPathPatternsCondition().getPatterns()) {
-                links.add(new Link(info.getName(), URL_PREFIX + pattern.toString()));
+
+            // 在Spring Boot 2.x中使用getPatternsCondition()
+            Set<String> patterns = info.getPatternsCondition().getPatterns();
+            for (String pattern : patterns) {
+                links.add(new Link(info.getName(), URL_PREFIX + pattern));
             }
         }
 
         return links;
     }
+
 }
