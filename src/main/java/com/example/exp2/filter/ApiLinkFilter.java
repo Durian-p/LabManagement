@@ -31,6 +31,16 @@ public class ApiLinkFilter implements Filter {
                          FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
+
+        // 获取当前请求的 URI
+        String currentUri = request.getRequestURI();
+
+        // 如果请求的 URI 是 "/exclude-uri"，直接放行
+        if ("/".equals(currentUri)) {
+            filterChain.doFilter(servletRequest, servletResponse);
+            return;
+        }
+
         ResponseWrapper wrapper = new ResponseWrapper(response);
         filterChain.doFilter(servletRequest, wrapper);
 

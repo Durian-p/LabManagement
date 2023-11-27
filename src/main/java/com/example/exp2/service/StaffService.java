@@ -5,7 +5,6 @@ import com.example.exp2.pojo.Staff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.exp2.mapper.StaffMapper;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,6 +50,10 @@ public class StaffService
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("staffId",id);
         Staff staff = mapper.selectOne(queryWrapper);
+        if (staff == null)
+        {
+            return null;
+        }
         mapper.delete(queryWrapper);
         return staff;
     }

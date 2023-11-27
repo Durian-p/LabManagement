@@ -1,0 +1,3304 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "实验二",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "人员管理"
+    },
+    {
+      "name": "物资管理"
+    },
+    {
+      "name": "借用信息管理"
+    }
+  ],
+  "paths": {
+    "/staff": {
+      "get": {
+        "summary": "获取所有人员列表",
+        "x-apifox-folder": "人员管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "人员管理"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "staffId": {
+                            "type": "integer"
+                          },
+                          "staffName": {
+                            "type": "string"
+                          },
+                          "staffPost": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "staffPost",
+                          "staffName",
+                          "staffId"
+                        ],
+                        "x-apifox-ignore-properties": [],
+                        "x-apifox-orders": [
+                          "staffId",
+                          "staffName",
+                          "staffPost"
+                        ]
+                      }
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    },
+                    "apis": {
+                      "type": "object",
+                      "properties": {
+                        "updateStaffById": {
+                          "type": "string"
+                        },
+                        "addStaff": {
+                          "type": "string"
+                        },
+                        "getAllStaffs": {
+                          "type": "string"
+                        },
+                        "deleteSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesList": {
+                          "type": "string"
+                        },
+                        "addSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesById": {
+                          "type": "string"
+                        },
+                        "getStaffById": {
+                          "type": "string"
+                        },
+                        "updateSuppliesById": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "data",
+                    "msg",
+                    "code",
+                    "apis"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "成功获取员工信息",
+                      "code": 1,
+                      "data": [
+                        {
+                          "staffPost": "1",
+                          "staffName": "tzf111",
+                          "staffId": 1
+                        },
+                        {
+                          "staffPost": "1",
+                          "staffName": "oyrj",
+                          "staffId": 2
+                        },
+                        {
+                          "staffPost": "0",
+                          "staffName": "ysy",
+                          "staffId": 3
+                        },
+                        {
+                          "staffPost": "0",
+                          "staffName": "shd",
+                          "staffId": 4
+                        },
+                        {
+                          "staffPost": "1",
+                          "staffName": "lj",
+                          "staffId": 5
+                        }
+                      ],
+                      "apis": {
+                        "updateStaffById": "http://localhost:8080/staff/{id}",
+                        "addStaff": "http://localhost:8080/staff",
+                        "getAllStaffs": "http://localhost:8080/staff",
+                        "deleteSupplies": "http://localhost:8080/supplies/{id}",
+                        "getSuppliesList": "http://localhost:8080/supplies",
+                        "addSupplies": "http://localhost:8080/supplies",
+                        "getSuppliesById": "http://localhost:8080/supplies/{id}",
+                        "getStaffById": "http://localhost:8080/staff/{id}",
+                        "updateSuppliesById": "http://localhost:8080/supplies/{id}"
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "查询失败",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124763776-run",
+        "security": []
+      },
+      "post": {
+        "summary": "新增人员",
+        "x-apifox-folder": "人员管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "人员管理"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "staffName": {
+                    "type": "string"
+                  },
+                  "staffPost": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "staffName",
+                  "staffPost"
+                ],
+                "required": [
+                  "staffName",
+                  "staffPost"
+                ],
+                "x-apifox-refs": {},
+                "x-apifox-ignore-properties": []
+              },
+              "example": {
+                "staffName": "maomao",
+                "staffPost": "1"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "integer",
+                      "description": "新建的staff的id"
+                    },
+                    "apis": {
+                      "type": "object",
+                      "properties": {
+                        "updateStaffById": {
+                          "type": "string"
+                        },
+                        "addStaff": {
+                          "type": "string"
+                        },
+                        "getAllStaffs": {
+                          "type": "string"
+                        },
+                        "deleteSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesList": {
+                          "type": "string"
+                        },
+                        "addSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesById": {
+                          "type": "string"
+                        },
+                        "getStaffById": {
+                          "type": "string"
+                        },
+                        "updateSuppliesById": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-orders": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-orders": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "成功添加员工信息",
+                      "code": 1,
+                      "data": 7,
+                      "apis": {
+                        "updateStaffById": "http://localhost:8080/staff/{id}",
+                        "addStaff": "http://localhost:8080/staff",
+                        "getAllStaffs": "http://localhost:8080/staff",
+                        "deleteSupplies": "http://localhost:8080/supplies/{id}",
+                        "getSuppliesList": "http://localhost:8080/supplies",
+                        "addSupplies": "http://localhost:8080/supplies",
+                        "getSuppliesById": "http://localhost:8080/supplies/{id}",
+                        "getStaffById": "http://localhost:8080/staff/{id}",
+                        "updateSuppliesById": "http://localhost:8080/supplies/{id}"
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 4,
+                      "msg": "请求的资源不存在",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124782185-run",
+        "security": []
+      }
+    },
+    "/supplies": {
+      "get": {
+        "summary": "获取所有实验室物资列表",
+        "x-apifox-folder": "物资管理",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "获取全部实验室物资",
+        "tags": [
+          "物资管理"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "description": "响应码"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "quantity": {
+                            "type": "integer"
+                          },
+                          "suppliesId": {
+                            "type": "integer"
+                          },
+                          "suppliesName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "quantity",
+                          "suppliesId",
+                          "suppliesName"
+                        ],
+                        "x-apifox-ignore-properties": [],
+                        "x-apifox-orders": [
+                          "quantity",
+                          "suppliesId",
+                          "suppliesName"
+                        ]
+                      }
+                    },
+                    "msg": {
+                      "type": "string",
+                      "description": "响应信息"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "data",
+                    "msg"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "data",
+                    "msg"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "data": [
+                        {
+                          "quantity": 1,
+                          "suppliesId": "1",
+                          "suppliesName": "坤"
+                        },
+                        {
+                          "quantity": 5,
+                          "suppliesId": "2",
+                          "suppliesName": "篮球"
+                        },
+                        {
+                          "quantity": 8,
+                          "suppliesId": "3",
+                          "suppliesName": "背带裤"
+                        }
+                      ],
+                      "msg": "成功获取物资列表"
+                    }
+                  },
+                  "2": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 1,
+                      "data": [
+                        {
+                          "quantity": 1,
+                          "suppliesId": 1,
+                          "suppliesName": "坤"
+                        },
+                        {
+                          "quantity": 49,
+                          "suppliesId": 2,
+                          "suppliesName": "篮球"
+                        },
+                        {
+                          "quantity": 8,
+                          "suppliesId": 3,
+                          "suppliesName": "背带裤"
+                        },
+                        {
+                          "quantity": 8,
+                          "suppliesId": 4,
+                          "suppliesName": "草履虫"
+                        }
+                      ],
+                      "msg": "成功获取物资列表"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124764024-run",
+        "security": []
+      },
+      "post": {
+        "summary": "新增实验室物资",
+        "x-apifox-folder": "物资管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "物资管理"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "suppliesName": {
+                    "type": "string",
+                    "title": "物资名称",
+                    "description": "物资名称"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "title": "物资存量",
+                    "description": "物资存量"
+                  }
+                },
+                "x-apifox-orders": [
+                  "suppliesName",
+                  "quantity"
+                ],
+                "required": [
+                  "suppliesName",
+                  "quantity"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": {
+                "suppliesName": "苛性氢",
+                "quantity": 52
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "title": "消息",
+                      "description": "响应消息"
+                    },
+                    "code": {
+                      "type": "integer",
+                      "title": "状态码",
+                      "description": "响应状态标识码"
+                    },
+                    "data": {
+                      "type": "integer",
+                      "description": "新增物品的id"
+                    },
+                    "apis": {
+                      "type": "object",
+                      "properties": {
+                        "updateStaffById": {
+                          "type": "string"
+                        },
+                        "addStaff": {
+                          "type": "string"
+                        },
+                        "getAllStaffs": {
+                          "type": "string"
+                        },
+                        "getSuppliesList": {
+                          "type": "string"
+                        },
+                        "deleteSupplies": {
+                          "type": "string"
+                        },
+                        "addSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesById": {
+                          "type": "string"
+                        },
+                        "getStaffById": {
+                          "type": "string"
+                        },
+                        "updateSuppliesById": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "getSuppliesList",
+                        "deleteSupplies",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-orders": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "getSuppliesList",
+                        "deleteSupplies",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-orders": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "成功添加物资",
+                      "code": 1,
+                      "data": 12,
+                      "apis": {
+                        "updateStaffById": "http://localhost:8080/staff/update/{id}",
+                        "addStaff": "http://localhost:8080/staff/add",
+                        "getAllStaffs": "http://localhost:8080/staff/all",
+                        "getSuppliesList": "http://localhost:8080/supplies",
+                        "deleteSupplies": "http://localhost:8080/supplies/{id}",
+                        "addSupplies": "http://localhost:8080/supplies",
+                        "getSuppliesById": "http://localhost:8080/supplies/{id}",
+                        "getStaffById": "http://localhost:8080/staff/get/{id}",
+                        "updateSuppliesById": "http://localhost:8080/supplies/{id}"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-128050651-run",
+        "security": []
+      }
+    },
+    "/borrowlog": {
+      "get": {
+        "summary": "获取所有出借物资信息",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "list": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/borrowLog"
+                          }
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "list"
+                      ],
+                      "required": [
+                        "list"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "required": [
+                    "msg",
+                    "data",
+                    "code"
+                  ],
+                  "x-apifox-refs": {},
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "查询成功！",
+                      "data": {
+                        "list": [
+                          {
+                            "borrowId": "35",
+                            "suppliesId": "9",
+                            "suppliesName": "过立明华技",
+                            "quantity": 89,
+                            "borrowDate": "1984-10-25"
+                          },
+                          {
+                            "borrowId": "62",
+                            "suppliesId": "72",
+                            "suppliesName": "越除花作看",
+                            "quantity": 75,
+                            "borrowDate": "1999-12-22"
+                          },
+                          {
+                            "borrowId": "30",
+                            "suppliesId": "17",
+                            "suppliesName": "统外算",
+                            "quantity": 33,
+                            "borrowDate": "2006-12-14"
+                          },
+                          {
+                            "borrowId": "23",
+                            "suppliesId": "36",
+                            "suppliesName": "况建教压边",
+                            "quantity": 80,
+                            "borrowDate": "2014-07-26"
+                          },
+                          {
+                            "borrowId": "44",
+                            "suppliesId": "31",
+                            "suppliesName": "选专形把研例收",
+                            "quantity": 79,
+                            "borrowDate": "1981-12-22"
+                          }
+                        ]
+                      },
+                      "code": 0
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "msg": "查询失败！",
+                      "data": {
+                        "list": []
+                      },
+                      "code": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124786007-run",
+        "security": []
+      },
+      "post": {
+        "summary": "新增物资出借",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "suppliesId": {
+                    "type": "string"
+                  },
+                  "suppliesName": {
+                    "type": "string",
+                    "title": "物资名"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "title": "物资数量"
+                  },
+                  "borrowDate": {
+                    "type": "string",
+                    "title": "借物日期"
+                  }
+                },
+                "x-apifox-orders": [
+                  "suppliesId",
+                  "suppliesName",
+                  "quantity",
+                  "borrowDate"
+                ],
+                "required": [
+                  "suppliesId",
+                  "suppliesName",
+                  "quantity",
+                  "borrowDate"
+                ],
+                "x-apifox-refs": {},
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": [],
+                      "nullable": true
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HF6DJNW5FB5BQDBYABE5TKKD"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01HF6DJNW5FB5BQDBYABE5TKKD": {
+                      "$ref": "#/components/schemas/CommonResponse",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN"
+                          ],
+                          "x-apifox-refs": {
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 45,
+                      "msg": "新增出借信息成功",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124812820-run",
+        "security": []
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "API",
+        "x-apifox-folder": "",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string"
+                          },
+                          "method": {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "path",
+                          "method",
+                          "description"
+                        ],
+                        "x-apifox-ignore-properties": [],
+                        "x-apifox-orders": [
+                          "path",
+                          "method",
+                          "description"
+                        ]
+                      }
+                    },
+                    "msg": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "data",
+                    "msg"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "data",
+                    "msg"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 1,
+                      "data": [
+                        {
+                          "path": "/staff",
+                          "method": "GET",
+                          "description": "获取所有人员列表"
+                        },
+                        {
+                          "path": "/staff",
+                          "method": "POST",
+                          "description": "新增人员"
+                        },
+                        {
+                          "path": "/supplies",
+                          "method": "GET",
+                          "description": "获取所有实验室物资列表"
+                        },
+                        {
+                          "path": "/supplies",
+                          "method": "POST",
+                          "description": "新增实验室物资"
+                        },
+                        {
+                          "path": "/borrowlog",
+                          "method": "GET",
+                          "description": "获取所有出借物资信息"
+                        },
+                        {
+                          "path": "/borrowlog",
+                          "method": "POST",
+                          "description": "新增物资出借"
+                        },
+                        {
+                          "path": "/",
+                          "method": "GET",
+                          "description": "hypermedia"
+                        },
+                        {
+                          "path": "/staff/{id}",
+                          "method": "GET",
+                          "description": "获取人员详细信息"
+                        },
+                        {
+                          "path": "/staff/{id}",
+                          "method": "DELETE",
+                          "description": "删除人员"
+                        },
+                        {
+                          "path": "/staff/{id}",
+                          "method": "PATCH",
+                          "description": "修改人员信息"
+                        },
+                        {
+                          "path": "/supplies/{id}",
+                          "method": "GET",
+                          "description": "获取实验室物资详情"
+                        },
+                        {
+                          "path": "/supplies/{id}",
+                          "method": "DELETE",
+                          "description": "删除实验室物资"
+                        },
+                        {
+                          "path": "/supplies/{id}",
+                          "method": "PATCH",
+                          "description": "修改物资信息"
+                        },
+                        {
+                          "path": "/returnlog",
+                          "method": "GET",
+                          "description": "获取所有归还物资信息"
+                        },
+                        {
+                          "path": "/returnlog",
+                          "method": "POST",
+                          "description": "新增物资归还"
+                        },
+                        {
+                          "path": "/borrowlog/{id}",
+                          "method": "GET",
+                          "description": "获取指定物资出借信息"
+                        },
+                        {
+                          "path": "/borrowlog/{id}",
+                          "method": "PUT",
+                          "description": "修改物资出借信息"
+                        },
+                        {
+                          "path": "/borrowlog/{id}",
+                          "method": "DELETE",
+                          "description": "删除物资出借信息"
+                        },
+                        {
+                          "path": "/returnlog/{id}",
+                          "method": "GET",
+                          "description": "获取指定物资归还信息"
+                        },
+                        {
+                          "path": "/returnlog/{id}",
+                          "method": "DELETE",
+                          "description": "删除物资归还信息"
+                        },
+                        {
+                          "path": "/return/{id}",
+                          "method": "PUT",
+                          "description": "修改物资归还信息"
+                        }
+                      ],
+                      "msg": "成功获取超媒体信息"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-128142167-run",
+        "security": []
+      }
+    },
+    "/staff/{id}": {
+      "get": {
+        "summary": "获取人员详细信息",
+        "x-apifox-folder": "人员管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "人员管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "staffId": {
+                          "type": "integer"
+                        },
+                        "staffName": {
+                          "type": "string"
+                        },
+                        "staffPost": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "staffPost",
+                        "staffName",
+                        "staffId"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "staffId",
+                        "staffName",
+                        "staffPost"
+                      ]
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    },
+                    "apis": {
+                      "type": "object",
+                      "properties": {
+                        "updateStaffById": {
+                          "type": "string"
+                        },
+                        "addStaff": {
+                          "type": "string"
+                        },
+                        "getAllStaffs": {
+                          "type": "string"
+                        },
+                        "deleteSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesList": {
+                          "type": "string"
+                        },
+                        "addSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesById": {
+                          "type": "string"
+                        },
+                        "getStaffById": {
+                          "type": "string"
+                        },
+                        "updateSuppliesById": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "data",
+                    "msg",
+                    "code",
+                    "apis"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "成功获取员工信息",
+                      "code": 1,
+                      "data": {
+                        "staffPost": "1",
+                        "staffName": "tzf111",
+                        "staffId": 1
+                      },
+                      "apis": {
+                        "updateStaffById": "http://localhost:8080/staff/{id}",
+                        "addStaff": "http://localhost:8080/staff",
+                        "getAllStaffs": "http://localhost:8080/staff",
+                        "deleteSupplies": "http://localhost:8080/supplies/{id}",
+                        "getSuppliesList": "http://localhost:8080/supplies",
+                        "addSupplies": "http://localhost:8080/supplies",
+                        "getSuppliesById": "http://localhost:8080/supplies/{id}",
+                        "getStaffById": "http://localhost:8080/staff/{id}",
+                        "updateSuppliesById": "http://localhost:8080/supplies/{id}"
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 4,
+                      "msg": "请求的资源不存在",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124770257-run",
+        "security": []
+      },
+      "patch": {
+        "summary": "修改人员信息",
+        "x-apifox-folder": "人员管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "人员管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "需要修改信息的人员id",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "staffName": {
+                    "type": "string",
+                    "description": "非必须但不可为null"
+                  },
+                  "staffPost": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "staffName",
+                  "staffPost"
+                ],
+                "x-apifox-refs": {},
+                "x-apifox-ignore-properties": []
+              },
+              "example": {
+                "staffPost": "1",
+                "staffName": "tzf123"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "staffId": {
+                          "type": "integer"
+                        },
+                        "staffName": {
+                          "type": "string"
+                        },
+                        "staffPost": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "staffPost",
+                        "staffName",
+                        "staffId"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "staffId",
+                        "staffName",
+                        "staffPost"
+                      ]
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    },
+                    "apis": {
+                      "type": "object",
+                      "properties": {
+                        "updateStaffById": {
+                          "type": "string"
+                        },
+                        "addStaff": {
+                          "type": "string"
+                        },
+                        "getAllStaffs": {
+                          "type": "string"
+                        },
+                        "deleteSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesList": {
+                          "type": "string"
+                        },
+                        "addSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesById": {
+                          "type": "string"
+                        },
+                        "getStaffById": {
+                          "type": "string"
+                        },
+                        "updateSuppliesById": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "data",
+                    "msg",
+                    "code",
+                    "apis"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "成功更新员工信息",
+                      "code": 1,
+                      "data": {
+                        "staffPost": "1",
+                        "staffName": "tzf123",
+                        "staffId": 1
+                      },
+                      "apis": {
+                        "updateStaffById": "http://localhost:8080/staff/{id}",
+                        "addStaff": "http://localhost:8080/staff",
+                        "getAllStaffs": "http://localhost:8080/staff",
+                        "deleteSupplies": "http://localhost:8080/supplies/{id}",
+                        "getSuppliesList": "http://localhost:8080/supplies",
+                        "addSupplies": "http://localhost:8080/supplies",
+                        "getSuppliesById": "http://localhost:8080/supplies/{id}",
+                        "getStaffById": "http://localhost:8080/staff/{id}",
+                        "updateSuppliesById": "http://localhost:8080/supplies/{id}"
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 2,
+                      "msg": "请求的资源不存在",
+                      "data": null
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124781248-run",
+        "security": []
+      },
+      "delete": {
+        "summary": "删除人员",
+        "x-apifox-folder": "人员管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "人员管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "7",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "staffPost": {
+                          "type": "string"
+                        },
+                        "staffName": {
+                          "type": "string"
+                        },
+                        "staffId": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "staffPost",
+                        "staffName",
+                        "staffId"
+                      ],
+                      "x-apifox-orders": [
+                        "staffPost",
+                        "staffName",
+                        "staffId"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    },
+                    "apis": {
+                      "type": "object",
+                      "properties": {
+                        "updateStaffById": {
+                          "type": "string"
+                        },
+                        "addStaff": {
+                          "type": "string"
+                        },
+                        "getAllStaffs": {
+                          "type": "string"
+                        },
+                        "deleteSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesList": {
+                          "type": "string"
+                        },
+                        "addSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesById": {
+                          "type": "string"
+                        },
+                        "getStaffById": {
+                          "type": "string"
+                        },
+                        "updateSuppliesById": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-orders": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "deleteSupplies",
+                        "getSuppliesList",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-ignore-properties": []
+                    }
+                  },
+                  "required": [
+                    "msg",
+                    "code",
+                    "apis"
+                  ],
+                  "x-apifox-orders": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 3,
+                      "msg": "删除失败",
+                      "data": null
+                    }
+                  },
+                  "2": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "成功删除员工信息",
+                      "code": 1,
+                      "data": {
+                        "staffPost": "1",
+                        "staffName": "maomao",
+                        "staffId": 7
+                      },
+                      "apis": {
+                        "updateStaffById": "http://localhost:8080/staff/{id}",
+                        "addStaff": "http://localhost:8080/staff",
+                        "getAllStaffs": "http://localhost:8080/staff",
+                        "deleteSupplies": "http://localhost:8080/supplies/{id}",
+                        "getSuppliesList": "http://localhost:8080/supplies",
+                        "addSupplies": "http://localhost:8080/supplies",
+                        "getSuppliesById": "http://localhost:8080/supplies/{id}",
+                        "getStaffById": "http://localhost:8080/staff/{id}",
+                        "updateSuppliesById": "http://localhost:8080/supplies/{id}"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124785920-run",
+        "security": []
+      }
+    },
+    "/supplies/{id}": {
+      "get": {
+        "summary": "获取实验室物资详情",
+        "x-apifox-folder": "物资管理",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "获取特定实验室物资的详细信息",
+        "tags": [
+          "物资管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "物资的id",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "状态码",
+                      "description": "响应状态标识码"
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "消息",
+                      "description": "响应消息"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "suppliesId": {
+                          "type": "integer",
+                          "title": "实验物资Id",
+                          "description": "实验物资Id"
+                        },
+                        "suppliesName": {
+                          "type": "string",
+                          "title": "实验物资名称",
+                          "description": "实验物资名称"
+                        },
+                        "quantity": {
+                          "type": "integer"
+                        }
+                      },
+                      "title": "数据",
+                      "description": "响应的数据",
+                      "required": [
+                        "quantity",
+                        "suppliesId",
+                        "suppliesName"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "suppliesId",
+                        "suppliesName",
+                        "quantity"
+                      ]
+                    },
+                    "apis": {
+                      "type": "object",
+                      "properties": {
+                        "updateStaffById": {
+                          "type": "string"
+                        },
+                        "addStaff": {
+                          "type": "string"
+                        },
+                        "getAllStaffs": {
+                          "type": "string"
+                        },
+                        "getSuppliesList": {
+                          "type": "string"
+                        },
+                        "deleteSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesById": {
+                          "type": "string"
+                        },
+                        "getStaffById": {
+                          "type": "string"
+                        },
+                        "addSupplies": {
+                          "type": "string"
+                        },
+                        "updateSuppliesById": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "getSuppliesList",
+                        "deleteSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "addSupplies",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "getSuppliesList",
+                        "deleteSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "addSupplies",
+                        "updateSuppliesById"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "msg",
+                    "data",
+                    "apis"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "成功获取指定物资",
+                      "code": 1,
+                      "data": {
+                        "quantity": 1,
+                        "suppliesId": 1,
+                        "suppliesName": "坤"
+                      },
+                      "apis": {
+                        "updateStaffById": "http://localhost:8080/staff/update/{id}",
+                        "addStaff": "http://localhost:8080/staff/add",
+                        "getAllStaffs": "http://localhost:8080/staff/all",
+                        "getSuppliesList": "http://localhost:8080/supplies",
+                        "deleteSupplies": "http://localhost:8080/supplies/{id}",
+                        "getSuppliesById": "http://localhost:8080/supplies/{id}",
+                        "getStaffById": "http://localhost:8080/staff/get/{id}",
+                        "addSupplies": "http://localhost:8080/supplies",
+                        "updateSuppliesById": "http://localhost:8080/supplies/{id}"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124800220-run",
+        "security": []
+      },
+      "patch": {
+        "summary": "修改物资信息",
+        "x-apifox-folder": "物资管理",
+        "x-apifox-status": "released",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "物资管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "物资的id",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "suppliesName": {
+                    "type": "string",
+                    "title": "物资名称",
+                    "description": "物资名称"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "title": "物资存量",
+                    "description": "物资存量"
+                  }
+                },
+                "x-apifox-orders": [
+                  "suppliesName",
+                  "quantity"
+                ],
+                "required": [
+                  "suppliesName",
+                  "quantity"
+                ],
+                "x-apifox-ignore-properties": []
+              },
+              "example": {
+                "suppliesName": "4090",
+                "quantity": 100
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "integer"
+                    },
+                    "data": {
+                      "type": "boolean"
+                    },
+                    "apis": {
+                      "type": "object",
+                      "properties": {
+                        "updateStaffById": {
+                          "type": "string"
+                        },
+                        "addStaff": {
+                          "type": "string"
+                        },
+                        "getAllStaffs": {
+                          "type": "string"
+                        },
+                        "getSuppliesList": {
+                          "type": "string"
+                        },
+                        "deleteSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesById": {
+                          "type": "string"
+                        },
+                        "getStaffById": {
+                          "type": "string"
+                        },
+                        "addSupplies": {
+                          "type": "string"
+                        },
+                        "updateSuppliesById": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "getSuppliesList",
+                        "deleteSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "addSupplies",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "getSuppliesList",
+                        "deleteSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "addSupplies",
+                        "updateSuppliesById"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "成功更新制定物资",
+                      "code": 1,
+                      "data": true,
+                      "apis": {
+                        "updateStaffById": "http://localhost:8080/staff/update/{id}",
+                        "addStaff": "http://localhost:8080/staff/add",
+                        "getAllStaffs": "http://localhost:8080/staff/all",
+                        "getSuppliesList": "http://localhost:8080/supplies",
+                        "deleteSupplies": "http://localhost:8080/supplies/{id}",
+                        "getSuppliesById": "http://localhost:8080/supplies/{id}",
+                        "getStaffById": "http://localhost:8080/staff/get/{id}",
+                        "addSupplies": "http://localhost:8080/supplies",
+                        "updateSuppliesById": "http://localhost:8080/supplies/{id}"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-128049149-run",
+        "security": []
+      },
+      "delete": {
+        "summary": "删除实验室物资",
+        "x-apifox-folder": "物资管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "物资管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "实验室物资的id",
+            "required": true,
+            "example": "11",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer",
+                      "title": "状态码",
+                      "description": "响应状态码"
+                    },
+                    "msg": {
+                      "type": "string",
+                      "title": "消息",
+                      "description": "响应消息"
+                    },
+                    "data": {
+                      "type": "boolean"
+                    },
+                    "apis": {
+                      "type": "object",
+                      "properties": {
+                        "updateStaffById": {
+                          "type": "string"
+                        },
+                        "addStaff": {
+                          "type": "string"
+                        },
+                        "getAllStaffs": {
+                          "type": "string"
+                        },
+                        "getSuppliesList": {
+                          "type": "string"
+                        },
+                        "deleteSupplies": {
+                          "type": "string"
+                        },
+                        "addSupplies": {
+                          "type": "string"
+                        },
+                        "getSuppliesById": {
+                          "type": "string"
+                        },
+                        "getStaffById": {
+                          "type": "string"
+                        },
+                        "updateSuppliesById": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "getSuppliesList",
+                        "deleteSupplies",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ],
+                      "x-apifox-ignore-properties": [],
+                      "x-apifox-orders": [
+                        "updateStaffById",
+                        "addStaff",
+                        "getAllStaffs",
+                        "getSuppliesList",
+                        "deleteSupplies",
+                        "addSupplies",
+                        "getSuppliesById",
+                        "getStaffById",
+                        "updateSuppliesById"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "msg",
+                    "code",
+                    "data",
+                    "apis"
+                  ],
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": [
+                    "code",
+                    "msg",
+                    "data",
+                    "apis"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "msg": "成功删除指定物资",
+                      "code": 1,
+                      "data": true,
+                      "apis": {
+                        "updateStaffById": "http://localhost:8080/staff/update/{id}",
+                        "addStaff": "http://localhost:8080/staff/add",
+                        "getAllStaffs": "http://localhost:8080/staff/all",
+                        "getSuppliesList": "http://localhost:8080/supplies",
+                        "deleteSupplies": "http://localhost:8080/supplies/{id}",
+                        "addSupplies": "http://localhost:8080/supplies",
+                        "getSuppliesById": "http://localhost:8080/supplies/{id}",
+                        "getStaffById": "http://localhost:8080/staff/get/{id}",
+                        "updateSuppliesById": "http://localhost:8080/supplies/{id}"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-128051226-run",
+        "security": []
+      }
+    },
+    "/returnlog": {
+      "get": {
+        "summary": "获取所有归还物资信息",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/returnLog"
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {},
+                  "x-apifox-ignore-properties": []
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "msg": "查询成功！",
+                      "data": [
+                        {
+                          "returnId": "54",
+                          "suppliesId": "50",
+                          "returnDate": "2003-06-30",
+                          "quantity": 74,
+                          "suppliesName": "照张有"
+                        },
+                        {
+                          "returnId": "81",
+                          "suppliesId": "87",
+                          "returnDate": "1996-07-09",
+                          "quantity": 78,
+                          "suppliesName": "参布识工"
+                        }
+                      ]
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "查询失败！",
+                      "data": []
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124805476-run",
+        "security": []
+      },
+      "post": {
+        "summary": "新增物资归还",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "suppliesName": {
+                    "type": "string",
+                    "title": "物资名"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "title": "物资数量"
+                  },
+                  "returnDate": {
+                    "type": "string",
+                    "title": "归还日期"
+                  }
+                },
+                "x-apifox-orders": [
+                  "suppliesName",
+                  "quantity",
+                  "returnDate"
+                ],
+                "required": [
+                  "returnDate",
+                  "quantity",
+                  "suppliesName"
+                ],
+                "x-apifox-refs": {},
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": [],
+                      "nullable": true
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HF6GDYCQ680P22CBFD4Q2Y6F"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01HF6GDYCQ680P22CBFD4Q2Y6F": {
+                      "$ref": "#/components/schemas/CommonResponse",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN"
+                          ],
+                          "x-apifox-refs": {
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "msg": "新增成功！",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "新增失败！",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124856720-run",
+        "security": []
+      }
+    },
+    "/borrowlog/{id}": {
+      "get": {
+        "summary": "获取指定物资出借信息",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "指定物资id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "borrowId": {
+                          "type": "string",
+                          "description": "主键"
+                        },
+                        "suppliesId": {
+                          "type": "string"
+                        },
+                        "suppliesName": {
+                          "type": "string",
+                          "title": "物资名"
+                        },
+                        "quantity": {
+                          "type": "integer",
+                          "title": "物资数量",
+                          "description": "没有物资为0"
+                        },
+                        "borrowDate": {
+                          "type": "string",
+                          "title": "借物日期"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "01HF6D4SMEJ563EF1SKFQ3SQZN"
+                      ],
+                      "required": [
+                        "borrowId",
+                        "suppliesId",
+                        "suppliesName",
+                        "quantity",
+                        "borrowDate"
+                      ],
+                      "x-apifox-refs": {
+                        "01HF6D4SMEJ563EF1SKFQ3SQZN": {
+                          "type": "object",
+                          "properties": {}
+                        }
+                      },
+                      "x-apifox-ignore-properties": [
+                        "borrowId",
+                        "suppliesId",
+                        "suppliesName",
+                        "quantity",
+                        "borrowDate"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HF6D4DAYRC4171FC3CR90EYP"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01HF6D4DAYRC4171FC3CR90EYP": {
+                      "$ref": "#/components/schemas/CommonResponse",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN"
+                          ],
+                          "x-apifox-refs": {
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "msg": "查询成功！",
+                      "data": {
+                        "borrowId": "66",
+                        "suppliesId": "81",
+                        "suppliesName": "至省快同情",
+                        "quantity": 76,
+                        "borrowDate": "1979-12-15"
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "查询失败！",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124808157-run",
+        "security": []
+      },
+      "put": {
+        "summary": "修改物资出借信息",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "suppliesName": {
+                    "type": "string",
+                    "title": "物资名"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "title": "物资数量"
+                  },
+                  "borrowDate": {
+                    "type": "string",
+                    "title": "借物日期"
+                  }
+                },
+                "x-apifox-orders": [
+                  "suppliesName",
+                  "quantity",
+                  "borrowDate"
+                ],
+                "required": [
+                  "suppliesName"
+                ],
+                "x-apifox-refs": {},
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": [],
+                      "nullable": true
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HF6GPWFVTQG5NFFF86A69YFW"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01HF6GPWFVTQG5NFFF86A69YFW": {
+                      "$ref": "#/components/schemas/CommonResponse",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN"
+                          ],
+                          "x-apifox-refs": {
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "msg": "修改成功！",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "修改失败！",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124860406-run",
+        "security": []
+      },
+      "delete": {
+        "summary": "删除物资出借信息",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": [],
+                      "nullable": true
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HF6H0FB37R2MYEDHNMQ0VPRG"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01HF6H0FB37R2MYEDHNMQ0VPRG": {
+                      "$ref": "#/components/schemas/CommonResponse",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN"
+                          ],
+                          "x-apifox-refs": {
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "msg": "删除成功！",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "删除失败！",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124866750-run",
+        "security": []
+      }
+    },
+    "/returnlog/{id}": {
+      "get": {
+        "summary": "获取指定物资归还信息",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "指定物资id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "returnId": {
+                          "type": "string",
+                          "description": "主键"
+                        },
+                        "suppliesId": {
+                          "type": "string"
+                        },
+                        "suppliesName": {
+                          "type": "string",
+                          "title": "物资名"
+                        },
+                        "quantity": {
+                          "type": "integer",
+                          "title": "物资数量"
+                        },
+                        "returnDate": {
+                          "type": "string",
+                          "title": "归还日期"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "01HF6D9JDG94DBEMEQA44DRBDB"
+                      ],
+                      "required": [
+                        "returnId",
+                        "suppliesId",
+                        "suppliesName",
+                        "quantity",
+                        "returnDate"
+                      ],
+                      "x-apifox-refs": {
+                        "01HF6D9JDG94DBEMEQA44DRBDB": {
+                          "type": "object",
+                          "properties": {}
+                        }
+                      },
+                      "x-apifox-ignore-properties": [
+                        "returnId",
+                        "suppliesId",
+                        "suppliesName",
+                        "quantity",
+                        "returnDate"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HF6D98TJ62Q0W0K5HP4ERVKH"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01HF6D98TJ62Q0W0K5HP4ERVKH": {
+                      "$ref": "#/components/schemas/CommonResponse",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN"
+                          ],
+                          "x-apifox-refs": {
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "msg": "获取成功！",
+                      "data": {
+                        "returnId": "66",
+                        "suppliesId": "53",
+                        "suppliesName": "治容观山龙下验",
+                        "quantity": 35,
+                        "returnDate": "2007-07-08"
+                      }
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "获取失败！",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124809126-run",
+        "security": []
+      },
+      "delete": {
+        "summary": "删除物资归还信息",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": [],
+                      "nullable": true
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HF6H40WM5AH16R0YB8T0GDKW"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01HF6H40WM5AH16R0YB8T0GDKW": {
+                      "$ref": "#/components/schemas/CommonResponse",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN"
+                          ],
+                          "x-apifox-refs": {
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 0,
+                      "msg": "删除成功！",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "删除失败！",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124867611-run",
+        "security": []
+      }
+    },
+    "/return/{id}": {
+      "put": {
+        "summary": "修改物资归还信息",
+        "x-apifox-folder": "借用信息管理",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "借用信息管理"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "suppliesName": {
+                    "type": "string",
+                    "title": "物资名"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "title": "物资数量"
+                  },
+                  "returnDate": {
+                    "type": "string",
+                    "title": "归还日期"
+                  }
+                },
+                "x-apifox-orders": [
+                  "suppliesName",
+                  "quantity",
+                  "returnDate"
+                ],
+                "required": [
+                  "suppliesName"
+                ],
+                "x-apifox-refs": {},
+                "x-apifox-ignore-properties": []
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "msg": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {},
+                      "x-apifox-orders": [],
+                      "x-apifox-ignore-properties": [],
+                      "nullable": true
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "01HF6GW4MB8MESTTAGZQ1JH1K3"
+                  ],
+                  "required": [
+                    "code",
+                    "msg",
+                    "data"
+                  ],
+                  "x-apifox-refs": {
+                    "01HF6GW4MB8MESTTAGZQ1JH1K3": {
+                      "$ref": "#/components/schemas/CommonResponse",
+                      "x-apifox-overrides": {
+                        "data": {
+                          "type": "object",
+                          "properties": {},
+                          "x-apifox-orders": [
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN"
+                          ],
+                          "x-apifox-refs": {
+                            "01HF6D4SMEJ563EF1SKFQ3SQZN": {
+                              "type": "object",
+                              "properties": {}
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "data"
+                      ]
+                    }
+                  },
+                  "x-apifox-ignore-properties": [
+                    "code",
+                    "msg",
+                    "data"
+                  ]
+                },
+                "examples": {
+                  "1": {
+                    "summary": "成功示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "修改成功！",
+                      "data": {}
+                    }
+                  },
+                  "2": {
+                    "summary": "异常示例",
+                    "value": {
+                      "code": 1,
+                      "msg": "修改失败！",
+                      "data": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/3588586/apis/api-124861582-run",
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "returnLog": {
+        "type": "object",
+        "properties": {
+          "returnId": {
+            "type": "string",
+            "description": "主键"
+          },
+          "suppliesId": {
+            "type": "string"
+          },
+          "suppliesName": {
+            "type": "string",
+            "title": "物资名"
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "物资数量"
+          },
+          "returnDate": {
+            "type": "string",
+            "title": "归还日期"
+          }
+        },
+        "x-apifox-orders": [
+          "returnId",
+          "suppliesId",
+          "suppliesName",
+          "quantity",
+          "returnDate"
+        ],
+        "required": [
+          "returnId",
+          "suppliesId",
+          "returnDate",
+          "quantity",
+          "suppliesName"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "borrowLog": {
+        "type": "object",
+        "properties": {
+          "borrowId": {
+            "type": "string",
+            "description": "主键"
+          },
+          "suppliesId": {
+            "type": "string"
+          },
+          "suppliesName": {
+            "type": "string",
+            "title": "物资名"
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "物资数量",
+            "description": "没有物资为0"
+          },
+          "borrowDate": {
+            "type": "string",
+            "title": "借物日期"
+          }
+        },
+        "x-apifox-orders": [
+          "borrowId",
+          "suppliesId",
+          "suppliesName",
+          "quantity",
+          "borrowDate"
+        ],
+        "required": [
+          "borrowId",
+          "suppliesId",
+          "suppliesName",
+          "quantity",
+          "borrowDate"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "Supplies": {
+        "type": "object",
+        "properties": {
+          "suppliesId": {
+            "type": "string",
+            "title": "物资ID"
+          },
+          "suppliesName": {
+            "type": "string",
+            "title": "物资名"
+          },
+          "quantity": {
+            "type": "integer",
+            "title": "物资数量",
+            "description": "没有物资为0"
+          }
+        },
+        "x-apifox-orders": [
+          "suppliesId",
+          "suppliesName",
+          "quantity"
+        ],
+        "required": [
+          "suppliesId",
+          "suppliesName",
+          "quantity"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "Staff": {
+        "type": "object",
+        "properties": {
+          "staffId": {
+            "type": "string"
+          },
+          "staffName": {
+            "type": "string"
+          },
+          "staffPost": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "staffId",
+          "staffName",
+          "staffPost"
+        ],
+        "x-apifox-orders": [
+          "staffId",
+          "staffName",
+          "staffPost"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      },
+      "CommonResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer"
+          },
+          "msg": {
+            "type": "string"
+          },
+          "data": {
+            "type": "object",
+            "properties": {},
+            "x-apifox-orders": [],
+            "x-apifox-ignore-properties": [],
+            "nullable": true
+          }
+        },
+        "x-apifox-orders": [
+          "code",
+          "msg",
+          "data"
+        ],
+        "required": [
+          "code",
+          "msg",
+          "data"
+        ],
+        "x-apifox-ignore-properties": [],
+        "x-apifox-folder": ""
+      }
+    },
+    "securitySchemes": {}
+  },
+  "servers": []
+}
