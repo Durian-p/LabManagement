@@ -1,9 +1,9 @@
 package com.example.exp2.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.exp2.pojo.returnLog;
+import com.example.exp2.pojo.BorrowLog;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface returnLogMapper extends BaseMapper<returnLog> {
+public interface BorrowLogMapper extends BaseMapper<BorrowLog> {
 }

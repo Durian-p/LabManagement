@@ -1,18 +1,18 @@
 package com.example.exp2.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.exp2.pojo.borrowLog;
+import com.example.exp2.pojo.BorrowLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.exp2.mapper.borrowLogMapper;
+import com.example.exp2.mapper.BorrowLogMapper;
 import java.util.List;
 
 @Service
 public class BorrowLogService {
-    private borrowLogMapper mapper;
+    private BorrowLogMapper mapper;
 
     @Autowired
-    BorrowLogService(borrowLogMapper mapper)
+    BorrowLogService(BorrowLogMapper mapper)
     {
         this.mapper = mapper;
     }
@@ -23,20 +23,20 @@ public class BorrowLogService {
         return mapper.selectList(queryWrapper);
     }
 
-    public borrowLog getBorrowLogById(String id)
+    public BorrowLog getBorrowLogById(String id)
     {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("borrowId",id);
         return mapper.selectOne(queryWrapper);
     }
 
-    public Integer addBorrowLog(borrowLog borrowLog)
+    public Integer addBorrowLog(BorrowLog borrowLog)
     {
         mapper.insert(borrowLog);
         return borrowLog.getBorrowId();
     }
 
-    public borrowLog updateBorrowLogById(String id, borrowLog borrowLog)
+    public BorrowLog updateBorrowLogById(String id, BorrowLog borrowLog)
     {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("borrowId",id);
@@ -44,11 +44,11 @@ public class BorrowLogService {
         return mapper.selectOne(queryWrapper);
     }
 
-    public borrowLog deleteBorrowLogById(String id)
+    public BorrowLog deleteBorrowLogById(String id)
     {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("borrowId",id);
-        borrowLog borrowLog = mapper.selectOne(queryWrapper);
+        BorrowLog borrowLog = mapper.selectOne(queryWrapper);
         mapper.delete(queryWrapper);
         return borrowLog;
     }

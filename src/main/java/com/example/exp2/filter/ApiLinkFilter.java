@@ -36,7 +36,7 @@ public class ApiLinkFilter implements Filter {
         String currentUri = request.getRequestURI();
 
         // 如果请求的 URI 是 "/exclude-uri"，直接放行
-        if ("/".equals(currentUri)) {
+        if ("/".equals(currentUri) || currentUri.contains(".html") || currentUri.contains("swagger") || currentUri.contains("docs")) {
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }

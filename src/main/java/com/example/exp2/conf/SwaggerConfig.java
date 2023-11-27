@@ -24,11 +24,11 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .select()
                 .apis(RequestHandlerSelectors.withMethodAnnotation(Operation.class))
-                .paths(PathSelectors.any())
+                //.paths(PathSelectors.any())
                 .build()
-                .globalRequestParameters(getGlobalRequestParameters())
                 .globalResponses(HttpMethod.GET,getGlobalResponseMessage())
-                .globalResponses(HttpMethod.POST,getGlobalResponseMessage());
+                .globalResponses(HttpMethod.POST,getGlobalResponseMessage())
+                .enable(true);
     }
 
     /*
@@ -36,30 +36,15 @@ public class SwaggerConfig {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Swagger3接口文档")
-                .description("如有疑问,可联系百度")
-                .contact(new Contact("李白","http://www.baidu.com","baidu@qq.com"))
+                .title("SOA实验二API文档")
+                .description("汪汪队SOA分队")
+                .contact(new Contact("CSU","https://www.csu.edu.cn", null))
                 .version("1.0")
                 .build();
     }
 
 
-    /*
-    封装全局通用参数
-     */
-    private List<RequestParameter> getGlobalRequestParameters() {
-        List<RequestParameter> parameters=new ArrayList<>();
-        parameters.add(new RequestParameterBuilder()
-                .name("uuid")
-                .description("设备uuid")
-                .required(true)
-                .in(ParameterType.QUERY)
-                .query(q->q.model(m->m.scalarModel((ScalarType.STRING))))
-                .required(false)
-                .build());
 
-        return parameters;
-    }
     /*
     封装通用相应信息
      */

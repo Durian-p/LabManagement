@@ -4,6 +4,7 @@ import com.example.exp2.common.CommonResponse;
 import com.example.exp2.pojo.Staff;
 import com.example.exp2.service.StaffService;
 import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,31 +27,35 @@ public class StaffController
      */
 
     @GetMapping(value = "", name = "getAllStaffs")
-    //@ApiOperation("获取所有员工列表")
+    @Operation(summary = "获取所有员工列表")
     public CommonResponse getAllStaffs()
     {
         return CommonResponse.forSuccess("成功获取员工信息", staffService.getAllStaffs());
     }
 
     @GetMapping(value = "/{id}", name = "getStaffById")
+    @Operation(summary = "根据id获取员工信息")
     public CommonResponse getStaffById(@PathVariable("id") String id)
     {
         return CommonResponse.forSuccess("成功获取员工信息",staffService.getStaffById(id));
     }
 
     @PostMapping(value = "", name = "addStaff")
+    @Operation(summary = "添加员工信息")
     public CommonResponse addStaff(@RequestBody Staff staff)
     {
         return CommonResponse.forSuccess("成功添加员工信息",staffService.addStaff(staff));
     }
 
     @PatchMapping(value = "/{id}", name = "updateStaffById")
+    @Operation(summary = "根据id更新员工信息")
     public CommonResponse updateStaffById(@PathVariable("id") String id, @RequestBody Staff staff)
     {
         return CommonResponse.forSuccess("成功更新员工信息",staffService.updateStaffById(id,staff));
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "根据id删除员工信息")
     public CommonResponse deleteStaffById(@PathVariable("id") String id)
     {
         Staff staff = staffService.deleteStaffById(id);
